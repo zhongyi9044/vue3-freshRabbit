@@ -1,3 +1,4 @@
+//获取导航栏数组的pinia管理方法
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
 import { getCategoryAPI } from "@/apis/layout.js"
@@ -10,6 +11,7 @@ const getCategory = async () => {
   const res = await getCategoryAPI()
   categoryList.value = res.result
 }
+//导出数据和方法
 return {
   categoryList,
   getCategory

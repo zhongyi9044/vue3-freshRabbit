@@ -4,19 +4,16 @@
 // import "@/styles/common.scss"
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
+import {lazyPlugin} from "@/directives/lazy.js"
 
 import App from './App.vue'
 import router from './router'
 
 const app = createApp(App)
 
-import {getCategory} from '@/apis/testApi.js'
-
-getCategory().then(res=>{
-  console.log(res)
-})
-
 app.use(createPinia())
 app.use(router)
+app.use(lazyPlugin)
 // app.use(ElementPlus)
 app.mount('#app')
+

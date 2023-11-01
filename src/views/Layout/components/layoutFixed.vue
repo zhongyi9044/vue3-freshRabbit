@@ -1,13 +1,14 @@
 <script setup>
-//导入useScroll
+//导入useScroll，一种可以实现导航栏根据页面滑动fixed的方法
 import { useScroll } from '@vueuse/core'
+//使用已经有数据的导航栏数据
 import { useCategoryStore } from '@/stores/category.js'
 const categoryStore=useCategoryStore()
-
-var fontSize = (window.innerWidth*100) / 750;
-const targetY=fontSize*0.75
+//手动设置rem
+var fontSize = parseInt(getComputedStyle(window.document.documentElement)['font-size']);
+console.log(fontSize)
+const targetY=fontSize*11.4
 const { y } = useScroll(window)
-
 </script>
 
 <template>
@@ -42,18 +43,20 @@ const { y } = useScroll(window)
   display: none;
 }
 .show {
-  display: block
+  display: block;
 }
 
 .headerbac {
   position: fixed;
   display: flex;
   justify-content: space-between;
-  background: rgb(247, 245, 245);
+  // background: rgb(247, 245, 245);
+  background-color: #fff;
   // margin: 0 10rem 0 10rem;
-  padding: 0 10rem;
+  padding: 0 10rem 1rem 10rem;
   align-items: end;
   width: 100%;
+  z-index: 999;
 
   .left {
     display: flex;

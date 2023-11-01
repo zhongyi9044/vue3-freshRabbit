@@ -1,5 +1,5 @@
 <script setup>
-//导入导航栏API
+//使用已经有数据的导航栏数据
 import { useCategoryStore } from '@/stores/category.js'
 const categoryStore=useCategoryStore()
 
@@ -35,8 +35,9 @@ const categoryStore=useCategoryStore()
 .headerbac {
   display: flex;
   justify-content: space-between;
-  background: rgb(247, 245, 245);
-  margin: 0 10rem 0 10rem;
+  // background: rgb(247, 245, 245);
+  background-color: #fff;
+  padding: 0 10rem 1rem 10rem;
   align-items: end;
 
   .left {

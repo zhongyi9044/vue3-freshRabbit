@@ -4,7 +4,7 @@ import layoutHeader from './components/layoutHeader.vue'
 import layoutNav from './components/layoutNav.vue'
 import layoutFixed from './components/layoutFixed.vue';
 
-//触发导航栏列表action
+//触发导航栏列表方法 action
 import { useCategoryStore } from '@/stores/category.js'
 import { onMounted } from 'vue';
 const categoryStore=useCategoryStore()
