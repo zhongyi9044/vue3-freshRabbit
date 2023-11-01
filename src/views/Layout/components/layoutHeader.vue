@@ -1,7 +1,7 @@
 <script setup>
 //使用已经有数据的导航栏数据
-import { useCategoryStore } from '@/stores/category.js'
-const categoryStore=useCategoryStore()
+import { useCategoryStore } from '@/stores/HomeCategory.js'
+const categoryStore = useCategoryStore()
 
 
 </script>
@@ -14,7 +14,7 @@ const categoryStore=useCategoryStore()
       <div class="writing">
         <a href="" class="img"></a>
         <li v-for="item in categoryStore.categoryList" :key="item.id">
-          <router-link to="/">{{ item.name }}</router-link>
+          <router-link :to="`/category/${item.id}`" active-class="active">{{ item.name }}</router-link>
         </li>
       </div>
     </div>
@@ -44,9 +44,22 @@ const categoryStore=useCategoryStore()
     display: flex;
     align-items: center;
 
+    a {
+      &:hover {
+        color: $sucColor;
+      }
+    }
+
+    .active {
+
+      color: $sucColor;
+      border-bottom: 0.1rem solid $sucColor;
+
+    }
+
     .writing {
       display: flex;
-      align-items:end;
+      align-items: end;
 
       li {
         // transform: translateY(45%);
@@ -78,11 +91,11 @@ const categoryStore=useCategoryStore()
       align-items: center;
 
 
-      .icon{
+      .icon {
         background-color: #ffffff;
-  
 
-        i{
+
+        i {
           display: block;
           transform: translateY(10%);
         }
@@ -95,4 +108,4 @@ const categoryStore=useCategoryStore()
     }
   }
 }
-</style>
+</style>@/stores/HomeCategory.js

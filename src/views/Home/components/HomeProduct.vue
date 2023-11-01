@@ -20,7 +20,7 @@ onMounted(() =>
       <template #main>
         <div class="goods-list">
           <RouterLink class="left" to="/">
-            <img :src="item.picture" />
+            <img v-img-lazy="item.picture" />
             <strong class="label">
               <span>{{ item.name }}馆</span>
               <span>{{ item.saleInfo }}</span>

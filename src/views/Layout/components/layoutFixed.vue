@@ -2,7 +2,7 @@
 //导入useScroll，一种可以实现导航栏根据页面滑动fixed的方法
 import { useScroll } from '@vueuse/core'
 //使用已经有数据的导航栏数据
-import { useCategoryStore } from '@/stores/category.js'
+import { useCategoryStore } from '@/stores/HomeCategory.js'
 const categoryStore=useCategoryStore()
 //手动设置rem
 var fontSize = parseInt(getComputedStyle(window.document.documentElement)['font-size']);
@@ -20,7 +20,7 @@ const { y } = useScroll(window)
         <div class="writing">
           <a href="" class="img"></a>
           <li v-for="item in categoryStore.categoryList" :key="item.id">
-            <router-link to="/">{{ item.name }}</router-link>
+            <router-link :to="`/category/${item.id}`" active-class="active">{{ item.name }}</router-link>
           </li>
         </div>
       </div>
@@ -61,6 +61,19 @@ const { y } = useScroll(window)
   .left {
     display: flex;
     align-items: center;
+
+    a {
+      &:hover {
+        color: $sucColor;
+      }
+    }
+
+    .active {
+
+      color: $sucColor;
+      border-bottom: 0.1rem solid $sucColor;
+
+    }
 
     .writing {
       display: flex;
@@ -113,4 +126,4 @@ const { y } = useScroll(window)
     }
   }
 }
-</style>
+</style>@/stores/HomeCategory.js

@@ -1,9 +1,9 @@
 //获取导航栏数组的pinia管理方法
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import { getCategoryAPI } from "@/apis/layout.js"
+import { getCategoryAPI } from "@/apis/layoutAPI/layout.js"
 
-export const useCategoryStore = defineStore('category', () => {
+export const useCategoryStore = defineStore('homeCategory', () => {
 //将导航栏列表数组变成响应式
 const categoryList = ref([])
 //调用API方法并且赋值

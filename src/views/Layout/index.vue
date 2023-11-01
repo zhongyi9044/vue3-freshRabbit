@@ -5,7 +5,7 @@ import layoutNav from './components/layoutNav.vue'
 import layoutFixed from './components/layoutFixed.vue';
 
 //触发导航栏列表方法 action
-import { useCategoryStore } from '@/stores/category.js'
+import { useCategoryStore } from '@/stores/HomeCategory.js'
 import { onMounted } from 'vue';
 const categoryStore=useCategoryStore()
 onMounted(()=>{
@@ -20,4 +20,4 @@ onMounted(()=>{
   <layout-header></layout-header>
   <router-view></router-view>
   <layout-footer></layout-footer>
-</template>
+</template>@/stores/HomeCategory.js
