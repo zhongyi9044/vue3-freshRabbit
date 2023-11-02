@@ -3,6 +3,8 @@
 // import { getCategoryAPI } from '@/apis/categoryAPI/getCategoryAPI';
 // import { ref, onMounted } from 'vue'
 // import { useRoute } from 'vue-router';
+
+//使用composables文件夹进行js代码管理
 import { useCategoryStore } from '@/stores/CategoryCategory.js'
 const categoryStore=useCategoryStore()
 </script>

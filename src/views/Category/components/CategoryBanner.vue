@@ -1,6 +1,7 @@
 <script setup>
-import { useGetBanner } from '../composables/useGetBanner';
 
+//使用composables文件夹进行js代码管理
+import { useGetBanner } from '../composables/useGetBanner';
 const {bannerList}=useGetBanner();
 // import { getBannerAPI } from "@/apis/homeAPI/banner.js";
 // import { ref, onMounted } from "vue";

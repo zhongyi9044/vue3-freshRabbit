@@ -1,5 +1,7 @@
-//获取导航栏数组的pinia管理方法
+//Home页的分类管理
+
 import { ref } from 'vue'
+//获取导航栏数组的pinia管理方法
 import { defineStore } from 'pinia'
 import { getCategoryAPI } from "@/apis/layoutAPI/layout.js"
 

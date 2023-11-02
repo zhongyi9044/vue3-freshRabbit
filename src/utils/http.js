@@ -3,9 +3,9 @@ import axios from "axios";
 
 //使用create方法设置基础地址，请求最大时间
 //create自动实例化axios
-const httpInstance=axios.create({
-  baseURL:'http://pcapi-xiaotuxian-front-devtest.itheima.net',
-  timeout:5000
+const httpInstance = axios.create({
+  baseURL: 'http://pcapi-xiaotuxian-front-devtest.itheima.net',
+  timeout: 5000
 })
 
 // 添加请求拦截器

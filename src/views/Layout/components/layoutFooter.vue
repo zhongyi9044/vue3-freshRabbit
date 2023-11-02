@@ -56,7 +56,7 @@
         </div>
         <div class="boxbottom">
           <div class="serve">
-            <span class="spe">189-2384-3583</span>
+            <span class="spe">189-2371-7105</span>
             <span>周一至周日 8:00-18:00</span>
           </div>
         </div>

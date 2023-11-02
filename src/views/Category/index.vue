@@ -6,6 +6,8 @@ import CategoryAll from './components/CategoryAll.vue'
 import { useRoute } from 'vue-router';
 import { useCategoryStore } from '@/stores/CategoryCategory.js'
 import { onMounted } from 'vue';
+
+//在index页调用，进行pinia管理
 const route = useRoute()
 const categoryStore=useCategoryStore()
 onMounted(()=>{

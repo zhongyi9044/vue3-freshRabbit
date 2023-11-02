@@ -3,3 +3,8 @@ $helpColor: #e26237;
 $sucColor: #1dc779;
 $warnColor: #ffb302;
 $priceColor: #cf4444;
+
+.el-tabs__item.is-active {
+  color: $sucColor !important;
+  border-bottom: 0.1rem solid $sucColor !important;
+}

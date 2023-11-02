@@ -1,8 +1,8 @@
 import httpInstance from "@/utils/http";
-//获取一级分类列表
-export function getCategoryAPI(id) {
+// 获取二级分类列表
+export function getSubCategoryAPI(id){
   return httpInstance({
-    url: '/category',
+    url: '/category/sub/filter',
     params: {
       id
     }

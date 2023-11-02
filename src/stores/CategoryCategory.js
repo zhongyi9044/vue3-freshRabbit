@@ -1,3 +1,5 @@
+//一级分类的管理
+
 import { getCategoryAPI } from '@/apis/categoryAPI/getCategoryAPI';
 import { ref} from 'vue'
 import { defineStore } from 'pinia'

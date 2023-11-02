@@ -1,12 +1,16 @@
 <script setup>
 // import { useCategoryStore } from '@/stores/CategoryCategory';
 import GoodsItem from '@/views/Home/components/GoodsItem.vue';
+
+//路由更新前操作函数
 import { onBeforeRouteUpdate } from 'vue-router';
 // const categoryStore = useCategoryStore();
-import {useGetCategory} from '../composables/useGetCategory';
 
-const {categoryStore} =useGetCategory()
-onBeforeRouteUpdate((to)=>{
+//使用composables文件夹进行js代码管理
+import { useGetCategory } from '../composables/useGetCategory';
+
+const { categoryStore } = useGetCategory()
+onBeforeRouteUpdate((to) => {
   categoryStore.getCategory(to.params.id)
 })
 </script>
@@ -16,10 +20,10 @@ onBeforeRouteUpdate((to)=>{
     <h3>全部分类</h3>
     <ul>
       <li v-for="item in categoryStore.categoryData.children" :key="item.id">
-        <RouterLink to="/">
+        <router-link :to="`/category/sub/${item.id}`">
           <img v-img-lazy="item.picture" />
           <p>{{ item.name }}</p>
-        </RouterLink>
+        </router-link>
       </li>
     </ul>
   </div>
