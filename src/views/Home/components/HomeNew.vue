@@ -1,6 +1,6 @@
 <script setup>
 import HomePanel from './HomePanel.vue'
-import { getNewAPI } from '@/apis/homeAPI/new';
+import { getNewAPI } from '@/apis/homeAPI/getHomeNewAPI';
 import { ref, onMounted } from 'vue'
 const newList = ref([]);
 const getNew = async () => {
@@ -17,7 +17,7 @@ onMounted(() => getNew())
       <template #main>
         <ul class="newList">
           <li v-for="item in newList" :key="item.id">
-            <RouterLink to="/">
+            <RouterLink :to="`/detail/${item.id}`">
               <img v-img-lazy="item.picture" alt="" />
               <p class="name">{{ item.name }}</p>
               <p class="price">&yen;{{ item.price }}</p>
@@ -61,4 +61,4 @@ onMounted(() => getNew())
     }
   }
 }
-</style>@/apis/homeAPI/new
+</style>@/apis/homeAPI/new@/apis/homeAPI/getHomeNewAPI

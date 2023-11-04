@@ -1,6 +1,6 @@
 //banner组件的js代码管理
 
-import { getBannerAPI } from "@/apis/homeAPI/banner.js";
+import { getBannerAPI } from "@/apis/homeAPI/getHomeBannerAPI.js";
 import { ref, onMounted } from "vue";
 
 export function useGetBanner() {

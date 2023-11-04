@@ -20,7 +20,7 @@ const { y } = useScroll(window)
         <div class="writing">
           <a href="" class="img"></a>
           <li v-for="item in categoryStore.categoryList" :key="item.id">
-            <router-link :to="`/category/${item.id}`" active-class="active">{{ item.name }}</router-link>
+            <router-link :to="`/category/${ item.id }`" active-class="active">{{ item.name }}</router-link>
           </li>
         </div>
       </div>

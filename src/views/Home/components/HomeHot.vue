@@ -1,6 +1,6 @@
 <script setup>
 import HomePanel from './HomePanel.vue'
-import { getHotAPI } from '@/apis/homeAPI/hot';
+import { getHotAPI } from '@/apis/homeAPI/getHomeHotAPI';
 import { ref, onMounted } from 'vue'
 
 const hotList = ref([]);
@@ -35,7 +35,7 @@ onMounted(() => getHot())
   display: flex;
   justify-content: space-between;
 
-  li{
+  li {
     width: 19.125rem;
     height: 25.375rem;
     transition: all .5s;
@@ -62,4 +62,4 @@ onMounted(() => getHot())
     }
   }
 }
-</style>
+</style>@/apis/homeAPI/getHomeHotAPI

@@ -8,14 +8,15 @@ console.log(categoryStore.categoryList)
   <div class="categoryBac">
     <ul class="category">
       <li class="categoryList" v-for="item in categoryStore.categoryList" :key="item.id">
-        <router-link to="/" class="menuL">{{ item.name }}></router-link>
-        <router-link to="/" v-for="item2 in item.children.slice(0, 2)" :key="item2.id" class="menuR">{{
-          item2.name }}</router-link>
+        <router-link :to="`category/${item.id}`" class="menuL">{{ item.name }}></router-link>
+        <router-link :to="`category/${item.id}`" v-for="item2 in item.children.slice(0, 2)" :key="item2.id"
+          class="menuR">{{
+            item2.name }}</router-link>
         <div class="layer">
           <h4>分类推荐 <small>根据您的购买或浏览记录推荐</small></h4>
           <ul>
             <li v-for="item3 in item.goods" :key="item3.id">
-              <RouterLink to="/">
+              <RouterLink :to="`/detail/${item.id}`">
                 <img :src="item3.picture" alt="" />
                 <div class="info">
                   <p class="name ellipsis-2">

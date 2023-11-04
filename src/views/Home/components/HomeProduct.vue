@@ -1,6 +1,6 @@
 <script setup>
 import HomePanel from './HomePanel.vue';
-import { getGoodsAPI } from '@/apis/homeAPI/goods';
+import { getGoodsAPI } from '@/apis/homeAPI/getHomeGoodsAPI';
 import GoodsItem from './GoodsItem.vue';
 import { ref, onMounted } from 'vue';
 const goodsList = ref([]);
@@ -19,7 +19,7 @@ onMounted(() =>
     <home-panel :title="item.name" v-for="item in goodsList" :key="item.id">
       <template #main>
         <div class="goods-list">
-          <RouterLink class="left" to="/">
+          <RouterLink class="left" :to="`/category/${item.id}`">
             <img v-img-lazy="item.picture" />
             <strong class="label">
               <span>{{ item.name }}馆</span>
@@ -131,4 +131,4 @@ onMounted(() =>
     }
   }
 }
-</style>
+</style>@/apis/homeAPI/getHomeGoodsAPI
