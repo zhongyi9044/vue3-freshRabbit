@@ -2,8 +2,6 @@
 import { useDetailGoodsStore } from '@/stores/Detail';
 const detailGoodsStore = useDetailGoodsStore()
 </script>
-
-
 <!-- 
             错误原因：goods一开始{}  {}.categories -> undefined  -> undefined[1]
             1. 可选链的语法?. 

@@ -1,17 +1,38 @@
 <script setup>
-
+import { useUserInfoStore } from '@/stores/loginUser'
+import { useRouter } from 'vue-router'
+const userInfoStore = useUserInfoStore()
+const router = useRouter()
+const logout = () => {
+  userInfoStore.clearUserInfo()
+  router.replace({ path: '/login' })
+}
 </script>
 
 <template>
   <!-- 导航栏目 -->
   <div class="navbac">
-    <div class="nav">
+    <div>
       <!-- 各项导航 -->
-      <li><a href=""><i class=" iconfont icon-yonghu"></i> 钟艺</a></li>
-      <li><a href="">退出登录</a></li>
-      <li><a href="">我的订单</a></li>
-      <li><a href="">订单中心</a></li>
-      <li class="last"><a href="">会员中心</a></li>
+      <ul class="nav" v-if="userInfoStore.userInfo.token">
+        <li><a href=""><i class=" iconfont icon-yonghu"></i>{{ userInfoStore.userInfo.account }}</a></li>
+        <li>
+          <el-popconfirm title="确认要退出吗" @confirm="logout" confirm-button-text="确认" cancel-button-text="返回">
+            <template #reference>
+              <a href="#">退出登录</a>
+            </template>
+          </el-popconfirm>
+        </li>
+        <!-- <a href="" @click="logout()"></a> -->
+        <li><a href="">我的订单</a></li>
+        <li><a href="">订单中心</a></li>
+        <li class="last"><a href="">会员中心</a></li>
+      </ul>
+      <ul class="nav" v-else>
+        <li><a href="/login" @click="$router.push('/login')"><i class=" iconfont icon-yonghu"></i>请先登录</a></li>
+        <li><a href="">帮助中心</a></li>
+        <li><a href="">关于我们</a></li>
+      </ul>
     </div>
   </div>
 </template>
