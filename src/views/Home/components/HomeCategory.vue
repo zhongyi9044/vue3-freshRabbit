@@ -1,5 +1,5 @@
 <script setup>
-import { useCategoryStore } from '@/stores/HomeCategory.js'
+import { useCategoryStore } from '@/stores/HomeCategoryStore.js'
 const categoryStore = useCategoryStore();
 console.log(categoryStore.categoryList)
 </script>
@@ -16,7 +16,7 @@ console.log(categoryStore.categoryList)
           <h4>分类推荐 <small>根据您的购买或浏览记录推荐</small></h4>
           <ul>
             <li v-for="item3 in item.goods" :key="item3.id">
-              <RouterLink :to="`/detail/${item.id}`">
+              <RouterLink :to="`/detail/${item3.id}`">
                 <img :src="item3.picture" alt="" />
                 <div class="info">
                   <p class="name ellipsis-2">
@@ -158,4 +158,4 @@ console.log(categoryStore.categoryList)
     }
   }
 }
-</style>@/stores/HomeCategory.js
+</style>@/stores/HomeCategory.js@/stores/HomeCategoryStore.js

@@ -1,6 +1,6 @@
 import 'element-plus/es/components/message/style/css'
 import { ElMessage } from 'element-plus'
-import { useUserInfoStore } from '@/stores/loginUser'
+import { useUserInfoStore } from '@/stores/loginUserStore'
 import  router  from '@/router/index'
 
 //引入axios

@@ -1,13 +1,13 @@
 <script setup>
+import layoutCart from './layoutCart.vue';
 //导入useScroll，一种可以实现导航栏根据页面滑动fixed的方法
 import { useScroll } from '@vueuse/core'
 //使用已经有数据的导航栏数据
-import { useCategoryStore } from '@/stores/HomeCategory.js'
-const categoryStore=useCategoryStore()
+import { useCategoryStore } from '@/stores/HomeCategoryStore.js'
+const categoryStore = useCategoryStore()
 //手动设置rem
 var fontSize = parseInt(getComputedStyle(window.document.documentElement)['font-size']);
-console.log(fontSize)
-const targetY=fontSize*11.4
+const targetY = fontSize * 11.4
 const { y } = useScroll(window)
 </script>
 
@@ -20,7 +20,7 @@ const { y } = useScroll(window)
         <div class="writing">
           <a href="" class="img"></a>
           <li v-for="item in categoryStore.categoryList" :key="item.id">
-            <router-link :to="`/category/${ item.id }`" active-class="active">{{ item.name }}</router-link>
+            <router-link :to="`/category/${item.id}`" active-class="active">{{ item.name }}</router-link>
           </li>
         </div>
       </div>
@@ -30,18 +30,17 @@ const { y } = useScroll(window)
           <div class="icon"><i class="iconfont icon-sousuoxiao"></i></div>
           <input type="text" placeholder="搜一搜" />
         </div>
-        <div class="cart">
-          <i class="iconfont icon-gouwuche"></i>
-        </div>
+        <layout-cart></layout-cart>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped lang="scss">
-.disshow{
+.disshow {
   display: none;
 }
+
 .show {
   display: block;
 }
@@ -126,4 +125,4 @@ const { y } = useScroll(window)
     }
   }
 }
-</style>@/stores/HomeCategory.js
+</style>@/stores/HomeCategory.js@/stores/HomeCategoryStore.js

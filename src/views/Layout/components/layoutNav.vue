@@ -1,5 +1,5 @@
 <script setup>
-import { useUserInfoStore } from '@/stores/loginUser'
+import { useUserInfoStore } from '@/stores/loginUserStore'
 import { useRouter } from 'vue-router'
 const userInfoStore = useUserInfoStore()
 const router = useRouter()
@@ -66,3 +66,4 @@ const logout = () => {
 }
 </style>
 
+@/stores/loginUserStore

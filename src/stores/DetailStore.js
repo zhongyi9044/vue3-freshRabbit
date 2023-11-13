@@ -1,4 +1,4 @@
-import { getDetailGoodsAPI } from '@/apis/Detail/getDetailGoodsAPI'
+import { getDetailGoodsAPI } from '@/apis/detail/getDetailGoodsAPI'
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
 

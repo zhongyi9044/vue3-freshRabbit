@@ -1,6 +1,7 @@
 <script setup>
+import layoutCart from './layoutCart.vue';
 //使用已经有数据的导航栏数据
-import { useCategoryStore } from '@/stores/HomeCategory.js'
+import { useCategoryStore } from '@/stores/HomeCategoryStore.js'
 const categoryStore = useCategoryStore()
 
 
@@ -24,9 +25,7 @@ const categoryStore = useCategoryStore()
         <div class="icon"><i class="iconfont icon-sousuoxiao"></i></div>
         <input type="text" placeholder="搜一搜" />
       </div>
-      <div class="cart">
-        <i class="iconfont icon-gouwuche"></i>
-      </div>
+      <layout-cart></layout-cart>
     </div>
   </div>
 </template>
@@ -108,4 +107,4 @@ const categoryStore = useCategoryStore()
     }
   }
 }
-</style>@/stores/HomeCategory.js
+</style>@/stores/HomeCategory.js@/stores/HomeCategoryStore.js

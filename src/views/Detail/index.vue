@@ -1,5 +1,5 @@
 <script setup>
-import { useDetailGoodsStore } from '@/stores/Detail.js'
+import { useDetailGoodsStore } from '@/stores/DetailStore.js'
 import Breadcrumb from './components/Breadcrumb.vue';
 import DetailGoodsMsg from './components/DetailGoodsMsg.vue';
 import { useRoute } from 'vue-router';
@@ -13,4 +13,4 @@ onMounted(() => { detailGoodsStore.getDetailGoods(route.params.id) })
 <template>
   <breadcrumb></breadcrumb>
   <detail-goods-msg></detail-goods-msg>
-</template>
+</template>@/stores/DetailStore.js

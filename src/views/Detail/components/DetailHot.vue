@@ -74,4 +74,4 @@ onMounted(() => getDetailHot())
     }
   }
 }
-</style>
+</style>@/apis/detail/getDetailHotAPI

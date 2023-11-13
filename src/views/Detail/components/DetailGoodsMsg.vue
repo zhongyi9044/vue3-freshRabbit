@@ -2,12 +2,48 @@
 // import XtxSku from '@/components/XtxSku/index.vue'
 // import imageView from '@/components/ImageView.vue';
 import DetailHot from './DetailHot.vue';
-import { useDetailGoodsStore } from '@/stores/Detail';
+import { useDetailGoodsStore } from '@/stores/DetailStore';
 import { onBeforeRouteUpdate } from 'vue-router';
+import { ref } from 'vue'
+import { useCartListStore } from '@/stores/CartStore';
+import { ElMessage } from 'element-plus';
 const detailGoodsStore = useDetailGoodsStore()
 onBeforeRouteUpdate((to) => {
   detailGoodsStore.getDetailGoods(to.params.id)
 })
+const cartListStore = useCartListStore();
+
+// sku变化
+const skuObject = ref({})
+
+const skuChange = (sku) => {
+  console.log(sku)
+  skuObject.value = sku
+}
+
+//获取数量
+const count = ref(0)
+const countChange = (count) => {
+  console.log(count)
+}
+
+//加入购物车
+const addCart = () => {
+  if (skuObject.value.skuId) {
+    cartListStore.addGodds({
+      id: detailGoodsStore.detailGoods.id,
+      name: detailGoodsStore.detailGoods.name,
+      picture: detailGoodsStore.detailGoods.mainPictures[0],
+      price: detailGoodsStore.detailGoods.price,
+      count: count.value,
+      skuId: skuObject.value.skuId,
+      attrsText: skuObject.value.specsText,
+      selected: true,
+    })
+  } else {
+    ElMessage.warning('请选择规格')
+  }
+}
 </script>
 
 <template>
@@ -70,12 +106,12 @@ onBeforeRouteUpdate((to) => {
             </dl>
           </div>
           <!-- sku组件 -->
-          <xtx-sku :goods="detailGoodsStore.detailGoods"></xtx-sku>
+          <xtx-sku :goods="detailGoodsStore.detailGoods" @change="skuChange"></xtx-sku>
           <!-- 数据组件 -->
-
+          <el-input-number v-model="count" :min="1" :max="10" @change="countChange" />
           <!-- 按钮组件 -->
           <div>
-            <el-button size="large" class="btn">
+            <el-button size="large" class="btn" @click="addCart">
               加入购物车
             </el-button>
           </div>
@@ -125,7 +161,8 @@ onBeforeRouteUpdate((to) => {
 
 
     .goods-top {
-      height: 40rem;
+      min-height: 40rem;
+      max-height: 400rem;
       display: flex;
 
       .goods-info {
@@ -245,11 +282,18 @@ onBeforeRouteUpdate((to) => {
   .goods-footer {
     display: flex;
     justify-content: center;
+    width: 100%;
+
+    .goods-aside {
+      width: 30%;
+    }
 
     .goods-article {
+      width: 70%;
 
       .goods-tabs {
         min-height: 36rem;
+
 
         nav {
           height: 4.5rem;
@@ -281,8 +325,8 @@ onBeforeRouteUpdate((to) => {
 
             li {
               display: flex;
-              width: 50%;
               margin-bottom: 0.6rem;
+              margin-right: 2rem;
 
               .dt {
                 width: 100px;
@@ -303,4 +347,4 @@ onBeforeRouteUpdate((to) => {
 
   }
 }
-</style>
+</style>@/stores/CartStore@/stores/DetailStore

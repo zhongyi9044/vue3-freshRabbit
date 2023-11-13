@@ -4,7 +4,7 @@ import { ref } from 'vue'
 import 'element-plus/es/components/message/style/css'
 import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router';
-import { useUserInfoStore } from '@/stores/loginUser'
+import { useUserInfoStore } from '@/stores/loginUserStore'
 
 //表单绑定的内容
 const form = ref({
@@ -43,14 +43,13 @@ const onLogin = () => {
   //valid：表单统一校验结果，true或者false
   formRef.value.validate(async (valid) => {
     if (valid) {
-      console.log(form.value)
       await userInfoStore.getUserInfo(form.value)
       ElMessage({ type: 'success', message: ('欢迎,用户' + userInfoStore.userInfo.account) })
       router.replace({ path: '/' })
     }
-
   })
 }
+
 
 </script>
 
@@ -124,4 +123,4 @@ const onLogin = () => {
     }
   }
 }
-</style>
+</style>@/stores/loginUserStore

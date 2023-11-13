@@ -1,5 +1,5 @@
 <script setup>
-import { useDetailGoodsStore } from '@/stores/Detail';
+import { useDetailGoodsStore } from '@/stores/DetailStore';
 const detailGoodsStore = useDetailGoodsStore()
 </script>
 <!-- 
@@ -35,4 +35,4 @@ const detailGoodsStore = useDetailGoodsStore()
     font-size: 1.5rem;
   }
 }
-</style>
+</style>@/stores/DetailStore

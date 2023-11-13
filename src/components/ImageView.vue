@@ -34,10 +34,10 @@ const top = ref(0)
 const positionX = ref(0)
 const positionY = ref(0)
 var fontSize = parseInt(getComputedStyle(window.document.documentElement)['font-size']);
-console.log(fontSize)
+// console.log(fontSize)
 watch([elementX, elementY], () => {
   if (!isOutside.value) {
-    console.log(elementX.value, elementY.value)
+    // console.log(elementX.value, elementY.value)
     if (7.5 * fontSize < elementX.value < 22.5 * fontSize) {
       left.value = elementX.value - 15 * fontSize / 2
     }

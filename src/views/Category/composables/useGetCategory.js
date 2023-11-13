@@ -1,4 +1,4 @@
-import { useCategoryStore } from '@/stores/CategoryCategory';
+import { useCategoryStore } from '@/stores/CategoryCategoryStore';
 
 export function useGetCategory(){
   const categoryStore = useCategoryStore();

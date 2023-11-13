@@ -4,7 +4,7 @@ import CategoryBanner from './components/CategoryBanner.vue'
 import CategoryAll from './components/CategoryAll.vue'
 
 import { useRoute } from 'vue-router';
-import { useCategoryStore } from '@/stores/CategoryCategory.js'
+import { useCategoryStore } from '@/stores/CategoryCategoryStore.js'
 import { onMounted } from 'vue';
 
 //在index页调用，进行pinia管理
@@ -27,3 +27,4 @@ onMounted(()=>{
 
 </style>
 
+@/stores/CategoryCategoryStore.js
