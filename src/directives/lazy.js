@@ -1,5 +1,6 @@
 import { useIntersectionObserver } from '@vueuse/core'
 
+//懒加载
 export const lazyPlugin = {
   install: (app) => {
     // 在这里编写插件代码

@@ -26,7 +26,7 @@ const logout = () => {
         <!-- <a href="" @click="logout()"></a> -->
         <li><a href="">我的订单</a></li>
         <li><a href="">订单中心</a></li>
-        <li class="last"><a href="">会员中心</a></li>
+        <li class="last"><router-link to="/vip">会员中心</router-link></li>
       </ul>
       <ul class="nav" v-else>
         <li><a href="/login" @click="$router.push('/login')"><i class=" iconfont icon-yonghu"></i>请先登录</a></li>

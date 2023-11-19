@@ -1,32 +1,47 @@
 <script setup>
 import { ref, onMounted } from 'vue'
+//导入获取结算数据的API
 import { createBillingAPI } from '@/apis/billingAPI/createBillingAPI'
+//获取订单API
 import { getOrderAPI } from '@/apis/payAPI/getOrderAPI'
 import { useRouter } from 'vue-router'
 import { useCartListStore } from '@/stores/CartStore'
 // import { mergeCartAPI } from '@/apis/cartAPI/mergeCartList'
 const time = ref('不限送货时间：周一至周日')
 const payMethod = ref('在线支付')
+
+//默认地址
 const defaultAddress = ref({})
+
+//结算数据
 const billingInfo = ref({})
+
+//是否展示
 const showAddress = ref(false)
 const cartListStore = useCartListStore()
+
+//获取结算页数据
 const getBillingInfo = async () => {
 
   const res = await createBillingAPI()
   billingInfo.value = res.result
+  //找到默认地址
   defaultAddress.value = billingInfo.value.userAddresses.find(item => item.isDefault === 0)
+
+  //如果没有默认地址就默认第一个是默认地址
   if (!defaultAddress.value) {
     defaultAddress.value = billingInfo.value.userAddresses[0];
     defaultAddress.value.isDefault = 0;
   }
 }
 
+//修改地址时，鼠标点击的选项地址
 const activeAddress = ref({})
 const changeAddress = (item) => {
   activeAddress.value = item
 }
 
+//确定修改地址按键事件
 const comfirm = () => {
   billingInfo.value.userAddresses.forEach(item => {
     if (item.id === defaultAddress.value.id) {
@@ -39,6 +54,8 @@ const comfirm = () => {
   showAddress.value = false
 }
 const router = useRouter()
+
+//获取订单数据，准备跳转订单页面
 const getOrder = async () => {
   const res = await getOrderAPI({
     deliveryTimeType: 1,
@@ -56,8 +73,10 @@ const getOrder = async () => {
 
   const orderId = res.result.id
 
+  //结算以后清空本地购物车
   cartListStore.clearCartList()
 
+  //根据订单数据的id跳转
   router.push({
     path: '/pay',
     query: {
@@ -65,6 +84,7 @@ const getOrder = async () => {
     }
   })
 
+  //重新获取最新购物车数据(选择框未选择的商品)
   cartListStore.getNewCartList()
 }
 

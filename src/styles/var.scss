@@ -5,6 +5,11 @@ $warnColor: #ffb302;
 $priceColor: #cf4444;
 
 .el-tabs__item.is-active {
-  color: $sucColor !important;
-  border-bottom: 0.1rem solid $sucColor !important;
+  color: $sucColor  !important;
+  border-bottom: 0.1rem solid $sucColor  !important;
+}
+
+.el-tabs__item {
+  padding-left: 20px !important;
+  padding-right: 20px !important;
 }

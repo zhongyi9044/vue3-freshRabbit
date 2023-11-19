@@ -3,6 +3,7 @@ import { useCartListStore } from '@/stores/CartStore'
 const cartListStore = useCartListStore()
 </script>
 
+<!-- 顶部小购物车 -->
 <template>
   <div class="cart">
     <router-link to="/cart" class="icon"><i class="iconfont icon-gouwuche"></i><em>{{ cartListStore.cartList.length

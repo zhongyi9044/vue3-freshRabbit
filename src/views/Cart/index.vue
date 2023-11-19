@@ -5,15 +5,18 @@ import { useRouter } from 'vue-router';
 const cartListStore = useCartListStore()
 const box = ref(null);
 
+//单选框修改
 const boxChange = (item, selected) => {
   cartListStore.boxchecked(item.skuId, selected)
 }
-
+//全选框修改
 const allBoxChange = (selected) => {
   cartListStore.allChecked(selected)
 }
 
 const router = useRouter()
+
+//跳转结算页面
 const getBilling = () => {
 
 

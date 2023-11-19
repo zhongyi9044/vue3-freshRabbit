@@ -1,32 +1,43 @@
+//引入删除数据库商品API
 import { deleteCartAPI } from '@/apis/cartAPI/deleteCartAPI'
+//引入获取数据库最新购物车数据API
 import { getCartListAPI } from '@/apis/cartAPI/getCartListAPI'
+//引入添加商品到数据库API
 import { inserCartAPI } from '@/apis/cartAPI/inserCartAPI'
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
+//引入用户登陆信息
 import { useUserInfoStore } from './loginUserStore'
+//引入修改商品选中状态API
 import { changeCheckAPI } from '@/apis/cartAPI/changeCheckAPI'
+//引入修改全选状态API
 import { changeAllCheckAPI } from '@/apis/cartAPI/changeAllCheckAPI'
 
 export const useCartListStore = defineStore('cart', () => {
   const userInfoStore = useUserInfoStore()
-  const isLogin = computed(() => userInfoStore.userInfo.token)
 
+  //是否登录
+  const isLogin = computed(() => userInfoStore.userInfo.token)
+//购物车数组
   const cartList = ref([])
 
   // const cartListDisSeleted = ref([])
 
+  //购物车商品总数量
   const cartCount = computed(() => {
     return ((cartList.value).reduce((total, item) => {
       return total + item.count
     }, 0))
   })
 
+  //购物车商品总价
   const priceCount = computed(() => {
     return ((cartList.value).reduce((total, item) => {
       return total + item.count * item.price
     }, 0))
   })
 
+  //修改商品选中状态
   const boxchecked = async (skuId, selected) => {
     const item = cartList.value.find((item) => item.skuId === skuId)
     item.selected = selected
@@ -34,33 +45,39 @@ export const useCartListStore = defineStore('cart', () => {
     await changeCheckAPI(item)
   }
 
+  //是否全选
   const isAllSelected = computed(() => {
     return cartList.value.every((item) => {
       return item.selected
     })
   })
 
+  //skuId集合
   const allSkuIds = computed(() => {
     return ((cartList.value).map((item) => item.skuId))
   })
 
+  //已选中的商品的总数
   const selectedCount = computed(() => {
     return ((cartList.value).filter((item) => item.selected).reduce((total, item) => {
       return total + item.count
     }, 0))
   })
 
+  //已选中的商品的总价
   const selectedPriceCount = computed(() => {
     return ((cartList.value).filter((item) => item.selected).reduce((total, item) => {
       return total + item.count * item.price
     }, 0))
   })
 
+  //获取最新数据库的购物车数据
   const getNewCartList = async () => {
     const res = await getCartListAPI()
     cartList.value = res.result
   }
 
+  //添加数据到数据库
   const addGodds = async (goods) => {
     if (isLogin.value) {
       await inserCartAPI(goods)
@@ -78,6 +95,7 @@ export const useCartListStore = defineStore('cart', () => {
     }
   }
 
+  //删除数据库商品数据
   const deleteGoods = async (skuId) => {
     if (isLogin.value) {
       await deleteCartAPI([skuId])
@@ -91,6 +109,7 @@ export const useCartListStore = defineStore('cart', () => {
 
   }
 
+  //全选
   const allChecked = async (selected) => {
     cartList.value.forEach((item) => {
       item.selected = selected
@@ -99,6 +118,7 @@ export const useCartListStore = defineStore('cart', () => {
     await changeAllCheckAPI(data.value)
   }
 
+  //清空本地购物车，下一步一般是准备合并数据库购物车
   const clearCartList = () => {
     cartList.value = []
   }

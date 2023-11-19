@@ -1,26 +1,37 @@
 <script setup>
+//订单详情API
 import { getOrderSubAPI } from '@/apis/payAPI/getOrderSubAPI'
 import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
+//倒计时
 import { useCountDown } from '@/composables/useCountDown';
+//formatTime：倒计时每秒更新的数据 start：开始时间
 const { formatTime, start } = useCountDown()
 const appli = ref()
 const bank = ref()
 const route = useRoute()
+
+//订单详情数据
 const payInfo = ref({})
+
+// 获取订单详情数据
 const getOrderSub = async () => {
   const res = await getOrderSubAPI(route.query.id)
   payInfo.value = res.result
+  // 开始倒计时
   start(res.result.countdown)
 }
 onMounted(() => getOrderSub())
 
-// 支付地址
+// 支付地址基地址
 const baseURL = 'http://pcapi-xiaotuxian-front-devtest.itheima.net/'
+//支付完毕跳转地址
 const backURL = 'http://10.134.9.227:5173/paycallback'
 const redirectUrl = encodeURIComponent(backURL)
+//支付地址
 const payUrl = `${baseURL}pay/aliPay?orderId=${route.query.id}&redirect=${redirectUrl}`
 
+//跳转到支付
 const toPay = () => {
   window.location.href = payUrl
 }
@@ -37,7 +48,7 @@ const toPay = () => {
     </ul>
     <ul class="count">
       <li>应付总额：</li>
-      <li>￥113</li>
+      <li>￥{{  payInfo.payMoney?.toFixed(2) }}</li>
     </ul>
   </div>
   <div class="foot">

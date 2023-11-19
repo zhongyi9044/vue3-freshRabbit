@@ -13,6 +13,9 @@ import Cart from '@/views/Cart/index.vue';
 import Billing from '@/views/Billing/index.vue'
 import Pay from '@/views/Pay/index.vue'
 import PayBack from '@/views/Pay/PayBack.vue'
+import VIP from '@/views/VIP/index.vue'
+import UserInfo from '@/views/VIP/components/UserInfo.vue'
+import MyBilling from '@/views/VIP/components/MyBilling.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -38,29 +41,51 @@ const router = createRouter({
           name: 'subCategory',
         },
         {
-          path:'detail/:id',
-          component:Detail,
-          name:'detail'
+          path: 'detail/:id',
+          component: Detail,
+          name: 'detail'
         },
         {
-          path:'cart',
-          component:Cart,
-          name:'cart'
+          path: 'cart',
+          component: Cart,
+          name: 'cart'
         },
         {
-          path:'billing',
-          component:Billing,
-          name:'billing',
+          path: 'billing',
+          component: Billing,
+          name: 'billing',
         },
         {
-          path:'pay',
-          component:Pay,
-          name:'pay'
+          path: 'pay',
+          component: Pay,
+          name: 'pay'
         },
         {
-          path:'paycallback',
-          component:PayBack,
-          name:'payBack'
+          path: 'payback',
+          component: PayBack,
+          name: 'payBack'
+        },
+        {
+          path: 'vip',
+          component: VIP,
+          name: 'vip',
+          children: [
+            {
+              path: '',
+              component: UserInfo,
+              name: 'userInfo_',
+            },
+            {
+              path: '',
+              component: UserInfo,
+              name: 'userInfo',
+            },
+            {
+              path: 'myBilling',
+              component: MyBilling,
+              name: 'myBilling',
+            }
+          ]
         }
       ]
     },

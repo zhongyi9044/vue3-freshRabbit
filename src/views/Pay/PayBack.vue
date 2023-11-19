@@ -1,10 +1,14 @@
 <script setup>
+//此组件是支付完毕跳转的页面
 import { onMounted, ref } from 'vue';
 import { getOrderSubAPI } from '@/apis/payAPI/getOrderSubAPI';
 import { useRoute, useRouter } from 'vue-router';
 const route = useRoute()
+
+//订单详情数据
 const orderInfo = ref({})
 
+//获取订单详情数据(因为和订单页面数据都是一样的)
 const getOrderInfo = async () => {
   const res = await getOrderSubAPI(route.query.orderId)
   orderInfo.value = res.result
@@ -34,6 +38,7 @@ onMounted(() => getOrderInfo())
       <li class="tit">支付{{ $route.query.payResult === 'true' ? '成功' : '失败' }}</li>
       <li class="tip">我们将尽快为您发货，收获期间请保持手机畅通</li>
       <li class="appli">支付方式：{{ orderInfo.payChannel === 1 ? '微信支付' : '支付宝' }}</li>
+      <!-- ？的作用是查看前面的数据是否存在，因为第一次渲染的时候orderInfo还是空，需要接口响应数据 -->
       <li class="money">支付金额：{{ orderInfo.payMoney?.toFixed(2) }}</li>
       <li>
         <el-radio-group v-model="edge" size="large" @change="toEdge">
